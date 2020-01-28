@@ -20,3 +20,4 @@ Route.get('/', () => {
   return { greeting: 'Hello world in JSON' }
 })
 Route.post('/users/sign_up','UserController.create')
+Route.post('/users/sign_in', 'SessionController.create')
