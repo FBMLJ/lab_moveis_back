@@ -9,15 +9,17 @@ class SessionController {
     return token
   }
 
-  async isUser ({auth}){
-    try {
-      const user = await auth.getUser() 
-      return user
-    }
+  async isUser ({response,request, auth}, next){
     
-    catch (error){
-      return {message: "You need sign_in"}
-    }
+    
+    const isLoggedIn =  await auth.check() 
+      
+      
+    
+    
+    if (!isLoggedIn)
+      return response.unauthorized({message: "Você deve estar logado para continuar"})
+    
     
 
   }

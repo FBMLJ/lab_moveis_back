@@ -16,9 +16,16 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
 
+// user not login
 Route.get('/', () => {
   return { greeting: 'Hello world in JSON' }
 })
 Route.post('/users/sign_up','UserController.create')
 Route.post('/users/sign_in', 'SessionController.create')
-Route.get('/users/in',"SessionController.isUser")
+
+//user login
+Route.get('*',"SessionController.isUser")
+Route.get('/app/hi', function * () {
+  console.log("oi")
+  return {message: "oi"}
+})
