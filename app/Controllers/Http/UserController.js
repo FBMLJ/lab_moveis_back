@@ -1,17 +1,20 @@
 "use strict"
 
 const User = use("App/Models/User")
-
+const { validate } = use('Validator')
 class UserController {
   async create ({ request }) {
     const data = request.only(["name", "email", "password"])
+    const rules = {
+      email: 'required|email|unique:users,email',
+      password: 'required|min:6'
+    }
+    const validation = await validate(data, rules)
+    if (validation.fails())
+      return validation.messages()
     
-    const valid = await User.findBy("email", data.email)
-    if (!valid)
-      return User.create(data)
-      
     else
-      return valid
+      return await User.create(data)
   }
 }
 
