@@ -21,3 +21,4 @@ Route.get('/', () => {
 })
 Route.post('/users/sign_up','UserController.create')
 Route.post('/users/sign_in', 'SessionController.create')
+Route.get('/users/in',"SessionController.isUser")

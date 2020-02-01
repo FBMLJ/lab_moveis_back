@@ -8,6 +8,19 @@ class SessionController {
 
     return token
   }
+
+  async isUser ({auth}){
+    try {
+      const user = await auth.getUser() 
+      return user
+    }
+    
+    catch (error){
+      return {message: "You need sign_in"}
+    }
+    
+
+  }
 }
 
 module.exports = SessionController
