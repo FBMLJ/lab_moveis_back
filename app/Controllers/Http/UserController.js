@@ -8,6 +8,7 @@ class UserController {
     const valid = await User.findByOrFail("email", data.email)
     if (!valid)
       return User.create(data)
+      
     else
       return valid
   }
