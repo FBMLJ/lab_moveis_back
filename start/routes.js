@@ -24,8 +24,5 @@ Route.post('/users/sign_up','UserController.create')
 Route.post('/users/sign_in', 'SessionController.create')
 
 //user login
-Route.get('*',"SessionController.isUser")
-Route.get('/app/hi', function * () {
-  console.log("oi")
-  return {message: "oi"}
-})
+// check user is logged
+// Route.get('/app/hi', () => {message: "oi"}).middleware(['auth'])
